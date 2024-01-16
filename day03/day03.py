@@ -30,6 +30,7 @@
 # numbers = input("FirstNumber SecondNumber").split()
 # print(int(numbers[0]) + int(numbers[1]))
 #
+#str.split
 # #join
 # #리스트를 문자열로 만들어준다.
 # list_subjects = ['python', 'c++', 'database']
@@ -45,8 +46,8 @@
 #rstrip <-right공간을 지운다.
 #구분자를 설정 가능하다.
 #연속적으로 있어야 한다.
-blurt = "What the...!!?"
-blurt.strip('.?!') #안에 들어가는 인자가 연속적으로 지워진다.
+# blurt = "What the...!!?"
+# blurt.strip('.?!') #안에 들어가는 인자가 연속적으로 지워진다.
 #연속적으로 있는 앙쪽 끝을 제거?
 
 #startswith, endswith true와 false로 return
@@ -88,20 +89,122 @@ blurt.strip('.?!') #안에 들어가는 인자가 연속적으로 지워진다.
 
 
 #소수
-number = int(input("Input number : "))
-count = 0
-i = 2
+# number = int(input("Input number : "))
+# is_prime = True
+# i = 2
+# if number < 2:
+#     print(f'{number} is not prime number!')
+# else :
+#     while i < number :
+#         if number % i == 0 :
+#             is_prime = False
+#             break
+#         i += 1
+#
+# if is_prime :
+#     print(f"{number} is prime number")
+# else :
+#     print(f"{number} is not prime number")
 
-while i < number :
-    if number % i == 0 :
-        count += 1
-        break
-    i += 1
+# univ = "inha"
+#
+# for k in range(0, len(univ),1) :
+#     print(univ[k], end = '')
+# #default start = 0
+#
+# number = int(input("Input number:"))
+#
+# if number < 2:
+#     print(f'{number} is not prime number!')
+# else :
+#     for i in range(2, number) :
+#         if number % i == 0 :
+#             is_prime = False
+#             break
+#         i += 1
+# if is_prime :
+#     print(f"{number} is prime number")
+# else :
+#     print(f"{number} is not prime number")
 
-if count == 0 :
-    print(f"{number} is prime number")
-else :
-    print(f"{number} is not prime number")
+
+#while과 for문에 붙는 else는 break가 되지 않으면 실행된다.
+#range는 리스트에 담아서 봐야한다.
+#역순으로 가려면 단계인자를 -로 지정
+
+# numbers = input("Input two number :").split()
+# n1 = int(numbers[0])
+# n2 = int(numbers[1])
+#
+# if n1 > n2 :
+#     n1 , n2 = n2, n1 #파이썬에서 swap없이 수를 swap하는 방법
+#
+# for number in range(n1, n2+1) :
+#     is_prime = True
+#
+#     if number < 2:
+#         continue
+#     else:
+#         for i in range(2, number):
+#             if number % i == 0:
+#                 is_prime = False
+#                 break
+#         if is_prime :
+#             print(number, end = ' ')
+
+
+# name = 'inha'
+# print(name[-3:-1])
+
+
+# number = int(input("Input number"))
+#
+# is_prime = True
+# if number < 2 :
+#     print(f"{number}는 소수가 아니다.")
+# else :
+#     for i in range(2, number) :
+#         if number % i == 0 :
+#             is_prime = False
+#             break;
+#
+#     if is_prime :
+#         print(f'{number}는 소수입니다.')
+#     else :
+#         print(f'{number}는 소수가 아니다.')
+
+
+lst_numbers = input("두 개의 숫자를 입력하세요 : ").split()
+
+n1 = int(lst_numbers[0])
+n2 = int(lst_numbers[1])
+
+if n1 > n2 :
+    n1, n2 = n2, n1
+
+for number in range(n1, n2+1) :
+    is_prime = True
+
+    if number < 2 :
+        continue
+    else :
+        for i in range(2, number) :
+            if number % i == 0 :
+                is_prime = False
+                break
+        if is_prime == True :
+            print(number, end = ' ')
+
+
+
+
+
+
+
+
+
+
+
 
 
 
