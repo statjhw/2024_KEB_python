@@ -164,7 +164,7 @@ t6 = 'python', 'pythonc++' #packing
 # print(subject, a,b,c)
 
 
-#2 깊은 복사 (리스트 안에 mutable한 자료가 있을 때)
+# 복사 (리스트 안에 mutable한 자료가 있을 때)
 # subject = ['a', ['c','b'], 'd']
 # a = subject
 # b = a.copy()
@@ -173,7 +173,7 @@ t6 = 'python', 'pythonc++' #packing
 # subject[1][1] = 'x'
 # print(subject, a,b,c)
 
-
+#2 깊은 복사
 # import copy
 # subject = ['a', ['c','b'], 'd']
 # a = subject
@@ -183,16 +183,16 @@ t6 = 'python', 'pythonc++' #packing
 
 
 #zip()함수 : 여러 개의 시퀀스를 만들어 주기 위해서이다.
-# days = ['Monday', 'Tuesday', 'Wednesday']
-# fruits = ['banana', 'orange', 'peach']
-# # drinks = ['coffee', 'tea', 'beer']
-# # desserts = ['tiramisu', 'ice cream', 'pie', 'pudding']
-# # for day, fruit, drink, dessert in zip(days, fruits, drinks, desserts):
-# #     print(day, ": drink", drink, "- eat", fruit, "- enjoy", dessert)
-#
-#
-# print(list(zip(days, fruits)))
-# print(dict(zip(days, fruits)))
+days = ['Monday', 'Tuesday', 'Wednesday']
+fruits = ['banana', 'orange', 'peach']
+# drinks = ['coffee', 'tea', 'beer']
+# desserts = ['tiramisu', 'ice cream', 'pie', 'pudding']
+# for day, fruit, drink, dessert in zip(days, fruits, drinks, desserts):
+#     print(day, ": drink", drink, "- eat", fruit, "- enjoy", dessert)
+
+
+print(list(zip(days, fruits)))
+print(dict(zip(days, fruits)))
 #
 # #Create a List with a Comprehension
 # numbers_list1 = list(range(1,6))
@@ -212,17 +212,14 @@ t6 = 'python', 'pythonc++' #packing
 # for row, col in cells :
 #     print(row, col)
 #
-#
-#
 # #튜플과 리스트의 차이점
 #
 # #딕셔너리
-#
+#딕셔너리의 key는 imutable한 타입만 올 수 있다.
 # #value에 접근하는 법
 # #1. 대괄호
 # #2. get함수 이용
 # #2번째 인수는 해당 키가 없으면 출력할 메세지를 받는다.
-#
 #
 # sugang = dict(python="kim", cpp ="sung", db="kang")
 # print(sugang)
@@ -240,25 +237,41 @@ t6 = 'python', 'pythonc++' #packing
 # print(sugang.items())
 
 #
-drinks_food = {'위스키' : '초콜릿', '와인' : '치즈', '소주' : '삼겹살', '고량주' : '양꼬치'}
-drink = input(f"{' , '.join(list(drinks_food.keys()))} 중에서 고르시오")
-drinks_food_keys = list(drinks_food.keys())
-while True :
-    menu = input(f"{' , '.join(list(drinks_food.keys()))} 중에서 고르시오")
-    if menu == '1' :
-        print(f"{drinks_food_keys[0]}에 어울리는 안주는 {drinks_food[drinks_food_keys[0]]}")
-    elif menu == '2' :
-        print(f"{drinks_food_keys[1]}에 어울리는 안주는 {drinks_food[drinks_food_keys[1]]}")
-    elif menu == '3' :
-        print(f"{drinks_food_keys[2]}에 어울리는 안주는 {drinks_food[drinks_food_keys[2]]}")
-    elif menu == '4' :
-        print(f"{drinks_food_keys[3]}에 어울리는 안주는 {drinks_food[drinks_food_keys[3]]}")
-    elif menu == '5' :
-        print("다음에 또 오시오")
-        break
+# import random
+# drinks_food = {'위스키' : '초콜릿', '와인' : '치즈', '소주' : '삼겹살', '고량주' : '양꼬치'}
+# drink = input(f"{' , '.join(list(drinks_food.keys()))} 중에서 고르시오")
+# drinks_food_keys = list(drinks_food.keys())
+# while True :
+#     menu = input(f"{' , '.join(list(drinks_food.keys()))} 중에서 고르시오")
+#     random_drink = random.choice(drinks_food_keys)
+#     if menu == '1' :
+#         print(f"{drinks_food_keys[0]}에 어울리는 안주는 {drinks_food[drinks_food_keys[0]]}")
+#     elif menu == '2' :
+#         print(f"{drinks_food_keys[1]}에 어울리는 안주는 {drinks_food[drinks_food_keys[1]]}")
+#     elif menu == '3' :
+#         print(f"{drinks_food_keys[2]}에 어울리는 안주는 {drinks_food[drinks_food_keys[2]]}")
+#     elif menu == '4' :
+#         print(f"{drinks_food_keys[3]}에 어울리는 안주는 {drinks_food[drinks_food_keys[3]]}")
+#     elif menu == '5' :
+#         print(f"{random_drink}에 어울리는 안주는 {drinks_food[random_drink]}")
+#     elif menu == '6' :
+#         print("다음에 또 오시오")
+#         break
+#
+# #combine 딕셔너리
+# first = {'a':'anony', 'b' : 'bliss'}
+# second = {'b' : ''}
+#
+# #pop()함수 삭제하고 리턴한다.
+# #del drinks_food['위스키']
+#
+# #update함수
+# japan_drinks_foods = {'사케' : '광어회', '위스키' : '낙곱새'}
+# drinks_food.update(japan_drinks_foods)
 
 
-
+dict = {'python' : 'kim', 'c++' : 'sung'}
+print((dict.keys()))
 
 
 

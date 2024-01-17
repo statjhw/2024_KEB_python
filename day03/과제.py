@@ -53,7 +53,8 @@
 #     elif menu == '5' :
 #         print("Quit Program")
 #         break;
-
+#     else :
+#         print('Ivalid Menu!')
 
 #과제2
 #1
