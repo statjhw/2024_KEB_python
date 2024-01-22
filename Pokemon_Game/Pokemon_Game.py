@@ -1,112 +1,26 @@
 import random
 import sys
 import time
+from pokemon import *
+from pokemon_other import *
 def attack_info(target) :
-    print(f"{target.name}의 남은 피 :{target.hp}")
-random.randint(45,55)
-class Pokemon :
+    if target.hp > 0 :
+        print(f"{target.name}의 남은 피 :{target.hp}")
+    else :
+        print(f"{target.name}의 남은 피 : 0")
 
-    def __init__(self, input_name, input_hp, input_level, input_type, input_tier):
-        self.__name = input_name
-        self.__hp = input_hp
-        self.__level = input_level
-        self.__type2 = input_type
-        self.__tier = input_tier
-        self.power = 5 * self.level + self.tier * 5
-    @property
-    def name(self) -> str:
-        '''
-        name_getter : 포켓몬의 이름을 반환하는 함수
-        :return: str
-        '''
-        return self.__name
-    @name.setter
-    def name(self, input_name) :
-        '''
-        name_setter : 포켓몬의 이름을 설정하는 함수
-        :param input_name: 변경하고 싶은 이름
-        :return: void
-        '''
-        self.__name = input_name
 
-    @property
-    def hp(self) :
-        return self.__hp
 
-    @hp.setter
-    def hp(self, input_hp) :
-        self.__hp = input_hp
 
-    @property
-    def level(self) :
-        return self.__level
+p1 = Pikachu('피카츄',random.randint(45,55),random.randint(1,3) ,'전기', 1)
 
-    @level.setter
-    def level(self, input_level) :
-        return self.__level
+k1 = Kubok('꼬북이',random.randint(45,55),random.randint(1,3) , '물', 1)
 
-    @property
-    def type2(self):
-        return self.__type2
+c1 = Charmander('파이리',random.randint(45,55),random.randint(1,3) , '불', 1)
 
-    @property
-    def tier(self):
-        return self.__tier
+p1 = Pebbles('꼬마돌',random.randint(45,55),random.randint(1,3) , '돌', 2)
 
-    def info(self) :   #각 포켓몬 class의 오버로딩 또는 데코레이터할 예정
-
-        print('포켓몬 정보'.center(14))
-        print('-'*14)
-        print(f'{self.name}'.center(14))
-        print('type :', self.type2.rjust(6))
-        print('hp :', str(self.hp).rjust(9))
-        print('공격력 :', str(self.power).rjust(7))
-        print('level :', str(self.level).rjust(6))
-        print('tier :', str(self.__tier).rjust(7))
-
-    def attack(self, target) :
-        target.hp -= self.power
-        print(f'공격력 : {self.power}')
-
-class Pikachu(Pokemon) :
-    def attack(self,target) :
-        super().attack(target)
-        print(f'피카피카!!! {self.name}이(가) {target.name}을(를) {self.type2} 공격합니다. 찌릿')
-
-class Kubok(Pikachu) :
-    def attack(self,target):
-        super().attack(target)
-        print(f'꼬북꼬북!!! {self.name}이(가) {target.name}을(를) {self.type2} 공격합니다. 물대포!!!')
-
-class Charmander(Pokemon) :
-    def attack(self,target) :
-        super().attack(target)
-        print(f'파이파이!!! {self.name}이(가) {target.name}을(를) {self.type2} 공격합니다. 파이어!!')
-
-class Pebbles(Pokemon) :
-    def attack(self,target) :
-        super().attack(target)
-        print(f'꼬마꼬마!!! {self.name}이(가) {target.name}을(를) {self.type2} 공격합니다. 원펀치!!')
-
-class Dialga(Pokemon) :
-    def attack(self, target):
-        super().attack(target)
-        print(f'{self.name}이(가) {target.name}을(를) {self.type2} 공격합니다. 드루와!!')
-random_hp = random.randint(45,55)
-random_level = random.randint(1,3)
-p1 = Pikachu('피카츄',random_hp,random_level, '전기', 1)
-random_hp = random.randint(45,55)
-random_level = random.randint(1,3)
-k1 = Kubok('꼬북이', random_hp, random_level, '물', 1)
-random_hp = random.randint(45,55)
-random_level = random.randint(1,3)
-c1 = Charmander('파이리', random_hp, random_level, '불', 1)
-random_hp = random.randint(45,55)
-random_level = random.randint(1,3)
-p1 = Pebbles('꼬마돌',random_hp, random_level, '돌', 2)
-random_hp = random.randint(100,105)
-random_level = random.randint(1,3)
-d1 = Dialga("디아루가",random_hp, random_level , '전설', 5)
+d1 = Dialga("디아루가",random.randint(100,130),random.randint(1,3) , '전설', 5)
 
 target_lst = [p1, k1, c1, p1]
 

@@ -11,6 +11,7 @@
 #
 # print(good())
 
+
 #2
 # def get_odd(n) :
 #     '''
@@ -55,6 +56,19 @@
 #함수 내부의 변수를 찾고 없으면 밖에서 찾는다.
 #global 키워드를 이용한 지역변수를 전역변수로 바뀌는 법
 #_, __
+
+cat = "cat"
+def change() :
+    cat = ''
+
+
+
+
+
+
+
+
+
 
 #재귀함수
 #factorial함수 for문 이용해 구현
@@ -264,66 +278,147 @@ import random
 # print(s1.attack(p1))
 
 #super
-class Pokemon :
-    def __init__(self, name):   #self -> this와 같은 역할
-        self.name = name
-        print(f"{self.name} 포켓몬스터 생성")
+# class Pokemon :
+#     def __init__(self, name):   #self -> this와 같은 역할
+#         self.name = name
+#         print(f"{self.name} 포켓몬스터 생성")
+#
+#     def attack(self, target):
+#         print(f"{self.name}가 {target.name}을 공격합니다.")
+#
+#
+# class Pikachu(Pokemon) : #is-a
+#     def __init__(self, name, type):
+#         super().__init__(name)
+#         self.type = type
+#     def attack(self, target):
+#         print(f"{self.name}이 {target.name}을 {self.type} 공격!") #함수 오버라이딩
+#     def ekectric_info(self) :
+#         print("전기 계열의 공격을 합니다.")
+# class Squirtle(Pokemon) :
+#     pass
+#
+# p1 = Pikachu('피카츄', '전기')
+# s1 = Squirtle("피카츄")
+# p1.attack(s1)
+# print(p1.name, p1.type)
+#
+# #다중상속 : 2개 이상의 부모클래스가 있다.
+# #파이썬의 다중 상속 시 함수의 상속 시 앞 순서에서 상속받은 클래스의 함수를 사용한다. -> 오류가 나지 ㅏㅇㄴㅎ는다.
+# class Animal:
+#     def says(self):
+#         return 'I speak!'
+#
+# class Horse(Animal):
+#     def says(self):
+#         return 'Neigh!'
+# class Donkey(Animal):
+#     def says(self):
+#         return 'Hee-haw!'
+# class Mule(Donkey, Horse):
+#     pass
+#
+# class Hinny(Horse, Donkey):
+#     pass
+#
+# m1 = Mule()
+# print(m1.says())
+# print(Mule.__mro__) #상속 순서를 나타낸다.
 
-    def attack(self, target):
-        print(f"{self.name}가 {target.name}을 공격합니다.")
+
+#Mixins
+# class FlyingMixin :
+#     def fly(self):
+#         return f"{self.name}이(가) 하늘을 훨훨 날아갑니다.~"
+# class SwimmingMixin:
+#     def swin(self):
+#         return f"{self.name}이(가) 수영을 합니다."
+#
+#
+# class Pokemon :
+#     def __init__(self, name):
+#         self.hidenname = name
+#     def attack(self):
+#         print(f"{self.name}이 공격합니다.")
+#
+#     def get_name(self):
+#         return self.hidenname
+#     def set_name(self, name):
+#         self.hidenname = name
+#     name = property(get_name, set_name)
+# class Charrizard(Pokemon, FlyingMixin) :
+#     pass
+#
+# class Gyaradis(Pokemon, SwimmingMixin) :
+#     pass
+#
+# g1 = Gyaradis("갸라도스")
+# c1 = Charrizard("리자몽")
+
+# print(c1.fly())
+# print(g1.swin())
+#
+#
+# #In
+# c1.attack()
+# Charrizard.attack(c1)
+#
+
+#Attributes Access
+#1.
+# print(g1.name)
+# g1.name = "잉어킹" #다이렉트 access
+# print(g1.get_name())
+# g1.set_name("갸라도스")
+# print(g1.get_name())
+#
+# #Properties for Attribute Access
+# #333번줄을 추가하고
+# print(g1.name)
+# g1.name = "잉어킹"
+# print(g1.name)
+
+#데코레이터를 이용한 properties
+class FlyingMixin:
+    def fly(self):
+        return f"{self.name}이(가) 하늘을 훨훨 날아갑니다.~"
 
 
-class Pikachu(Pokemon) : #is-a
-    def __init__(self, name, type):
-        super().__init__(name)
-        self.type = type
-    def attack(self, target):
-        print(f"{self.name}이 {target.name}을 {self.type} 공격!") #함수 오버라이딩
-    def ekectric_info(self) :
-        print("전기 계열의 공격을 합니다.")
-class Squirtle(Pokemon) :
+class SwimmingMixin:
+    def swin(self):
+        return f"{self.name}이(가) 수영을 합니다."
+
+
+class Pokemon:
+    def __init__(self, input_name):
+        self.__name = input_name
+
+    def attack(self):
+        print(f"{self.__name}이 공격합니다.")
+
+    @property
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, input_name):
+        self.__name = input_name
+
+
+class Charrizard(Pokemon, FlyingMixin):
     pass
 
-p1 = Pikachu('피카츄', '전기')
-s1 = Squirtle("피카츄")
-p1.attack(s1)
-print(p1.name, p1.type)
 
-#다중상속 : 2개 이상의 부모클래스가 있다.
-#파이썬의 다중 상속 시 함수의 상속 시 앞 순서에서 상속받은 클래스의 함수를 사용한다. -> 오류가 나지 ㅏㅇㄴㅎ는다.
-class Animal:
-    def says(self):
-        return 'I speak!'
-
-class Horse(Animal):
-    def says(self):
-        return 'Neigh!'
-class Donkey(Animal):
-    def says(self):
-        return 'Hee-haw!'
-class Mule(Donkey, Horse):
+class Gyaradis(Pokemon, SwimmingMixin):
     pass
 
-class Hinny(Horse, Donkey):
-    pass
-
-m1 = Mule()
-print(m1.says())
-print(Mule.__mro__) #상속 순서를 나타낸다.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+g1 = Gyaradis("갸라도스")
+g1.name = "잉어킹"
+print(g1.name)
+#히든 네임도 바꿀 수 있다.
+#Attribute를 private하기 위해서 __name을 사용한다.
+print(g1.__name)
+print(g1._Pokemon__name) #하지만 이런 접근은 가능하다. private가 사실상 불가능하다.
 
 
 

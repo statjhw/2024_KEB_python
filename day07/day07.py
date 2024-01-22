@@ -20,7 +20,6 @@
 #duck typing
 #파이썬에서 다형성을 가지는 방법
 
-
 #magic method(연산자 오버로딩)
 #원하는 작동방식으로 구현 가능
 #매개변수의 포켓몬을 넣고, 매개변수의 인수를 넣고 싶을 때 함수 오버로딩이 안되기 때문에 어떻게 구현?
@@ -54,50 +53,64 @@
 #         self.hp = hp
 #         self.fly_behavior = Fly() #클래스 내부에서 만들어 준다. (Composition)
 
-#11장 모듈
-import myMath
-#특정 함수를 파일에 옮기고 import를 이용해 불러온다.
+# #11장 모듈
+# import myMath
+# #특정 함수를 파일에 옮기고 import를 이용해 불러온다.
+#
+# while True:
+#     menu = input("1) Fahrenheit -> Celsius   2) Celsius -> Fahrenheit   3) Prime1   4) Prime2   5) Quit program : ")
+#
+#     if menu == '1':
+#         fahrenheit = float(input('Input Fahrenheit : '))
+#         print(f'Fahrenheit : {fahrenheit}F, Celsius : {((fahrenheit-32.0)*5.0/9.0):.4f}C')
+#     elif menu == '2':
+#         celsius = float(input('Input Celsius : '))
+#         print(f'Celsius : {celsius}C, Fahrenheit : {((celsius*9.0/5.0)+32.0):.4f}F')
+#     elif menu == '3':
+#         number = int(input("Input number : "))
+#         if myMath.isprime(number):
+#             print(f'{number} is prime number')
+#         else:
+#             print(f'{number} is NOT prime number!')
+#     elif menu == '4':
+#         n1, n2 = map(int, input("Input first second number : ").split())
+#         n1, n2 = min(n1, n2), max(n1, n2)
+#         # numbers = input("Input first second number : ").split()
+#         # n1 = int(numbers[0])
+#         # n2 = int(numbers[1])
+#         # if n1 > n2:
+#         #     n1, n2 = n2, n1
+#
+#         for number in range(n1, n2 + 1):
+#             if myMath.isprime(number):
+#                 print(number, end=' ')
+#         print()
+#     elif menu == '5':
+#         print('Terminate Program.')
+#         break
+#     else:
+#         print('Invalid Menu!')
 
-while True:
-    menu = input("1) Fahrenheit -> Celsius   2) Celsius -> Fahrenheit   3) Prime1   4) Prime2   5) Quit program : ")
+class Fly :
+	def fly(self) :
+		print("하늘을 난다")
 
-    if menu == '1':
-        fahrenheit = float(input('Input Fahrenheit : '))
-        print(f'Fahrenheit : {fahrenheit}F, Celsius : {((fahrenheit-32.0)*5.0/9.0):.4f}C')
-    elif menu == '2':
-        celsius = float(input('Input Celsius : '))
-        print(f'Celsius : {celsius}C, Fahrenheit : {((celsius*9.0/5.0)+32.0):.4f}F')
-    elif menu == '3':
-        number = int(input("Input number : "))
-        if myMath.isprime(number):
-            print(f'{number} is prime number')
-        else:
-            print(f'{number} is NOT prime number!')
-    elif menu == '4':
-        n1, n2 = map(int, input("Input first second number : ").split())
-        n1, n2 = min(n1, n2), max(n1, n2)
-        # numbers = input("Input first second number : ").split()
-        # n1 = int(numbers[0])
-        # n2 = int(numbers[1])
-        # if n1 > n2:
-        #     n1, n2 = n2, n1
-
-        for number in range(n1, n2 + 1):
-            if myMath.isprime(number):
-                print(number, end=' ')
-        print()
-    elif menu == '5':
-        print('Terminate Program.')
-        break
-    else:
-        print('Invalid Menu!')
+class Nofly(Fly) :
+	def fly(self) :
+		print("하늘을 날지 못한다.")
 
 
+class Pokemon :
+	def __init__(self, name, hp, fly_b) :
+		self.name = name
+		self.hp = hp
+		self.fly = fly_b
 
+class Pikachu(Pokemon) :
+	pass
 
-
-
-
+p1 = Pikachu('피카츄', 3, Nofly())
+p1.fly.fly()
 
 
 
